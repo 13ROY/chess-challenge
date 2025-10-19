@@ -1,15 +1,19 @@
 import { useState } from 'react';
 import StartScreen from './components/StartScreen';
 import ChessGame from './components/ChessGame';
-import { saveGame, getGame } from './utils/storage';
+import { saveGame, getGame, createGameCode } from './utils/storage';
 import './App.css';
 
 function App() {
   const [currentGame, setCurrentGame] = useState(null);
 
   const handleStartNewGame = (gameData) => {
+    // Generate a unique game code for sharing
+    const gameCode = createGameCode(gameData.gameId);
+    
     const newGameData = {
       ...gameData,
+      gameCode,
       fen: null, // Start with default position
       history: [],
     };

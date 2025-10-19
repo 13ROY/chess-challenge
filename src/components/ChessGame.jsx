@@ -138,6 +138,13 @@ function ChessGame({ gameData, onSave, onBack }) {
     <div className="chess-game">
       <div className="game-header">
         <h1>♟️ {gameData.gameName}</h1>
+        {gameData.gameCode && (
+          <div className="game-code-display">
+            <span className="code-label">Game Code:</span>
+            <span className="code-value">{gameData.gameCode}</span>
+            <span className="code-info">Share this code with other players to let them join</span>
+          </div>
+        )}
         <div className="players">
           <div className={`player ${currentPlayer === 'w' ? 'active' : ''}`}>
             <span className="player-icon">♔</span>
